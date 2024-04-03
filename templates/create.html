@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Добавить товар{% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="container py-5">
+                <div class="row mb-4 mb-lg-5">
+                    <div class="col-md-8 col-xl-6 text-center mx-auto">
+                        <h2 class="fw-bold">Добавление товара</h2>
+                        <form method="post" action="." enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            {% if form.errors or form.non_field_errors %}
+                                    <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                                        {% for field in form %}
+                                            {{ field.errors }}
+                                        {% endfor %}
+
+                                        {{ form.non_field_errors }}
+                                    </div>
+                                {% endif %}
+                            <button class="btn btn-success" type="submit">Добавить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

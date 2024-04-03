@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Заказы{% endblock %}
+
+{% block content %}
+    <section class="py-5">
+        <div class="container py-5">
+            <div class="row mb-4 mb-lg-5">
+                <div class="col-md-8 col-xl-6 text-center mx-auto">
+                    <h2 class="fw-bold">Поступившие заказы</h2>
+                </div>
+            </div>
+            <div class="row mx-auto g-4">
+                {% for order in orders %}
+                    <div class="col">
+                        <div class="card border  text-center mb-3" style="max-width: 18rem; ">
+                            <div class="card-header" >{{ order.item }}</div>
+                            <div class="card-body">
+                                <p class="card-text text-dark">{{ order.size }}</p>
+                                <p class="card-text text-dark">{{ order.name }}</p>
+                                <p class="card-text text-dark">{{ order.email }}</p>
+                                <p class="card-text text-dark">{{ order.paymrnt }}</p>
+                                <p class="card-text text-dark">{{ order.address }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
